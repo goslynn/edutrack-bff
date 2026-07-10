@@ -6,6 +6,7 @@ import { asistenciaRouter }   from './routes/asistencia.js'
 import { anotacionesRouter }  from './routes/anotaciones.js'
 import { calificacionesRouter } from './routes/calificaciones.js'
 import { configuracionRouter } from './routes/configuracion.js'
+import { contenidoRouter } from './routes/contenido.js'
 
 const app = new Hono()
 
@@ -21,6 +22,7 @@ app.route('/bff/asistencia',     asistenciaRouter)
 app.route('/bff/anotaciones',    anotacionesRouter)
 app.route('/bff/calificaciones', calificacionesRouter)
 app.route('/bff/configuracion',  configuracionRouter)
+app.route('/bff/contenido',      contenidoRouter)
 
 app.onError((err, c) => {
   console.error(`[bff] ${c.req.method} ${c.req.path} — ${err.message}`)
