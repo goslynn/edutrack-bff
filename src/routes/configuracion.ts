@@ -6,7 +6,7 @@
  * GET /configuracion/resources
  *   → fan-out to every MS's /meta/resources endpoint, returning the unified
  *     resource catalog the Roles panel needs to build the permission matrix.
- *     Shape: { auth, course, student, attendance, annotation, assessment }
+ *     Shape: { auth, course, student, attendance, annotation, assessment, content, report }
  *     (each is the ServiceResources response from that MS).
  */
 import { Hono } from 'hono'
@@ -19,6 +19,8 @@ const S    = env.ms.student
 const ATT  = env.ms.attendance
 const ANN  = env.ms.annotation
 const ASS  = env.ms.assessment
+const CNT  = env.ms.content
+const R    = env.ms.report
 
 export const configuracionRouter = new Hono()
 
@@ -33,10 +35,12 @@ configuracionRouter.get('/resources', async (c) => {
     `${ATT}/meta/resources`,
     `${ANN}/meta/resources`,
     `${ASS}/meta/resources`,
+    `${CNT}/meta/resources`,
+    `${R}/meta/resources`,
   )
   if (!result.ok) return passthroughError(result.response)
-  const [auth, course, student, attendance, annotation, assessment] = result.jsons
-  return c.json({ auth, course, student, attendance, annotation, assessment })
+  const [auth, course, student, attendance, annotation, assessment, content, report] = result.jsons
+  return c.json({ auth, course, student, attendance, annotation, assessment, content, report })
 })
 
 // ── Users (proxy → MS-Auth) ───────────────────────────────────────────────────

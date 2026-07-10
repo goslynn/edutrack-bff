@@ -169,6 +169,8 @@ check_5xx "GET /bff/anotaciones/00000000-0000-0000-0000-000000000001" \
   "$GATEWAY_URL/bff/anotaciones/00000000-0000-0000-0000-000000000001" "${AUTH[@]}"
 check_5xx "GET /bff/calificaciones/00000000-0000-0000-0000-000000000001" \
   "$GATEWAY_URL/bff/calificaciones/00000000-0000-0000-0000-000000000001" "${AUTH[@]}"
+check_5xx "GET /bff/reportes/definitions" \
+  "$GATEWAY_URL/bff/reportes/definitions" "${AUTH[@]}"
 
 # ── Resumen ───────────────────────────────────────────────────────────────────
 TOTAL=$((PASS+FAIL))

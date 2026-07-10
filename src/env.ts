@@ -14,5 +14,6 @@ export const env = {
     attendance: base('ATTENDANCE_MS_URL', 'http://attendance:8080', 'attendance'),
     assessment: base('ASSESSMENT_MS_URL', 'http://assessment:8080', 'assessment'),
     content:    base('CONTENT_MS_URL',    'http://content:8080',    'content'),
+    report:     base('REPORT_MS_URL',     'http://report:8080',     'report'),
   },
 } as const
